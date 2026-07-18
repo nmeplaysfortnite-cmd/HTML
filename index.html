@@ -1,18 +1,465 @@
-<div class="section" style="text-align: center;">
-    <h2>Gameplay: Fortnitegamer125 - Iron Banner</h2>
-    
-    <!-- This makes the image clickable like a big play button -->
-    <a href="https://www.youtube.com/watch?v=CMshCkkfc2E" target="_blank" style="display: inline-block; position: relative;">
-        <!-- The thumbnail image -->
-        <img src="https://i.ytimg.com/vi/CMshCkkfc2E/maxresdefault.jpg" 
-             alt="Watch Gameplay" 
-             style="width: 80%; border-radius: 15px; border: 3px solid #ff4500; cursor: pointer;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Hub</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ff0000; /* BRIGHT RED BACKGROUND FOR THE WHOLE SITE */
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Live Announcement Status Bar */
+        .live-status-bar {
+            background-color: #b30000;
+            color: #ffffff;
+            text-align: center;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            border-bottom: 3px solid #550000;
+        }
+        .live-status-bar:hover {
+            background-color: #990000;
+        }
+        .pulse-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            animation: broadcastPulse 1.5s infinite;
+        }
+        @keyframes broadcastPulse {
+            0% { transform: scale(0.9); opacity: 1; box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+            70% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+            100% { transform: scale(0.9); opacity: 0; box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+
+        /* Navigation Bar - Red Theme */
+        header {
+            background-color: #b30000;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid #550000;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #f5a623;
+        }
+
+        /* Welcome Banner Section */
+        .welcome-banner {
+            max-width: 1200px;
+            margin: 40px auto 10px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .welcome-banner h2 {
+            font-size: 34px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #ffffff;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.5);
+            background: #b30000;
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 8px;
+            border: 2px solid #ffffff;
+        }
+
+        /* Live Stream Section Layout */
+        .live-stream-section {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .live-stream-section h3 {
+            font-size: 22px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 3px solid #ffffff;
+        }
+
+        /* Hero Section Container */
+        .hero-container {
+            max-width: 1200px;
+            margin: 10px auto 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* Left Side: Content */
+        .hero-text h1 {
+            font-size: 44px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        .hero-text p {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .btn {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #ff0000;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: background 0.3s, transform 0.2s;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .btn:hover {
+            background-color: #f5a623;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* Right Side: Foreground Image */
+        .hero-image img {
+            width: 100%;
+            max-height: 550px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #ffffff;
+        }
+
+        /* Dual Creators Section Layout */
+        .creators-heading {
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .creators-grid {
+            max-width: 1200px;
+            margin: 0 auto 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .creator-card {
+            background: #b30000; 
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            border: 2px solid #ffffff;
+            transition: transform 0.3s;
+        }
+        .creator-card:hover {
+            transform: translateY(-3px);
+        }
+        .creator-card h3 {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .creator-card .handle {
+            font-size: 18px;
+            color: #f5a623;
+            margin-bottom: 20px;
+            display: block;
+            font-weight: 600;
+        }
+        .creator-card p {
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 16px;
+            min-height: 50px;
+        }
         
-        <!-- A fake "Play Button" icon over the image -->
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 50px; color: white; text-shadow: 2px 2px 4px #000;">
-            ▶
-        </div>
+        /* Button Container inside Cards */
+        .card-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-youtube {
+            background-color: #ffffff;
+            color: #ff0000;
+            width: 100%;
+            max-width: 250px;
+        }
+        .btn-youtube:hover {
+            background-color: #f5a623;
+            color: #ffffff;
+        }
+
+        /* New Discord Button Style */
+        .btn-discord {
+            background-color: #5865F2;
+            color: #ffffff;
+            width: 100%;
+            max-width: 250px;
+            border: 2px solid #ffffff;
+            padding: 12px 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-discord:hover {
+            background-color: #4752C4;
+        }
+
+        /* Contact Section */
+        .contact-heading {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 10px;
+            font-size: 32px;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .contact-subtext {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 30px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+        .contact-grid {
+            max-width: 1200px;
+            margin: 0 auto 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .contact-card {
+            background-color: #b30000; 
+            border: 2px solid #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+        .contact-card h4 {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        .email-link, .discord-tag {
+            color: #f5a623;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+            word-break: break-all;
+        }
+        .email-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #ffffff;
+            font-size: 14px;
+            margin-top: 40px;
+            background-color: #b30000;
+            border-top: 3px solid #550000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Direct YouTube Live Announcement Banner -->
+    <a href="https://www.youtube.com/channel/UCG54tSvEi9TIdoam3cGahXQ" target="_blank" class="live-status-bar">
+        <div class="pulse-dot"></div>
+        🔴 @Fortnitegamer_125 IS LIVE! Click here to tune in right now!
     </a>
+
+    <!-- Header / Navbar -->
+    <header>
+        <div class="logo">Guardians Hub</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="https://www.youtube.com/channel/UCG54tSvEi9TIdoam3cGahXQ" target="_blank">@Fortnitegamer_125</a>
+            <a href="https://www.youtube.com/results?search_query=NMEPLAYSDESTINY" target="_blank">NMEPLAYSDESTINY</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Updated Welcome Greeting Banner -->
+    <div class="welcome-banner">
+        <h2>Welcome to my new website gaming</h2>
+    </div>
+
+    <!-- ERROR-FREE LIVE VIDEO LINK DECK (Completely bypasses YouTube embed restrictions) -->
+    <section class="live-stream-section">
+        <h3>🔴 Live Stream Feed</h3>
+        <div class="video-wrapper">
+            <a href="https://youtube.com/live/aNYoNN0zp78" target="_blank" style="display: block; position: absolute; top:0; left:0; width:100%; height:100%; text-decoration:none;">
+                <div style="width:100%; height:100%; background: linear-gradient(135deg, #111 0%, #333 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative;">
+                    
+                    <!-- Pulsing Live Tag -->
+                    <div style="position: absolute; top: 15px; left: 15px; background: #ff0000; color: #fff; padding: 4px 10px; font-weight: bold; font-size: 12px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 2px 8px rgba(0,0,0,0.5);">
+                        🔴 Click to Join Live
+                    </div>
+
+                    <!-- Glowing Play Graphic Icon -->
+                    <div style="width: 70px; height: 70px; background: #ffffff; border-radius: 50%; display: flex; justify-content: center; align-items: center; box-shadow: 0 0 20px rgba(255,255,255,0.4); margin-bottom: 10px;">
+                        <div style="width: 0; height: 0; border-top: 15px solid transparent; border-bottom: 15px solid transparent; border-left: 25px solid #ff0000; margin-left: 6px;"></div>
+                    </div>
+
+                    <!-- Stream Action Message -->
+                    <span style="color: #ffffff; font-weight: bold; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">
+                        Watch @Fortnitegamer_125 Live
+                    </span>
+                    <span style="color: #f5a623; font-size: 13px; margin-top: 5px; font-weight: 600;">
+                        Click to open stream feed in a new tab
+                    </span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Main Hero Content -->
+    <main class="hero-container">
+        <div class="hero-text">
+            <h1>Eyes up, Guardian.</h1>
+            <p>Welcome to the ultimate hub. Dive into the world of Destiny 2, track your fireteam's progress, and gear up for the next raid. The Light protects you, but your weapon guides you.</p>
+            <a href="https://www.youtube.com/channel/UCG54tSvEi9TIdoam3cGahXQ" target="_blank" class="btn">Explore Channel</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://i.ebayimg.com/images/g/3pYAAOSwMJ9iDxe1/s-l400.jpg" alt="Destiny 2 Guardians charging forward into battle">
+        </div>
+    </main>
+
+    <!-- Creators Section -->
+    <h2 class="creators-heading">Featured Creators</h2>
+    <section class="creators-grid">
+        
+        <!-- YOUR CHANNEL -->
+        <div class="creator-card">
+            <h3>My Channel</h3>
+            <span class="handle">@Fortnitegamer_125</span>
+            <p>Subscribe for build videos, flawless highlights, and massive gaming clips updated weekly.</p>
+            <div class="card-buttons">
+                <a href="https://www.youtube.com/channel/UCG54tSvEi9TIdoam3cGahXQ" target="_blank" class="btn btn-youtube">Subscribe</a>
+                <!-- Click to copy Discord username function -->
+                <button class="btn-discord" onclick="copyDiscordTag()">Add on Discord</button>
+            </div>
+        </div>
+
+        <!-- YOUR DAD'S CHANNEL -->
+        <div class="creator-card">
+            <h3>Dad's Channel</h3>
+            <span class="handle">NMEPLAYSDESTINY</span>
+            <p>Check out his channel for heavy hitting Destiny 2 gameplay, co-op firesides, and raid clears.</p>
+            <div class="card-buttons">
+                <a href="https://www.youtube.com/results?search_query=NMEPLAYSDESTINY" target="_blank" class="btn btn-youtube">Visit Channel</a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Contact Section -->
+    <h2 class="contact-heading" id="contact">Get In Touch</h2>
+    <p class="contact-subtext">Want to team up, sponsor a video, or join the fireteam? Drop us a line:</p>
     
-    <p style="margin-top: 10px; color: #ffeb3b; font-weight: bold;">Click the image to play!</p>
-</div>
+    <section class="contact-grid">
+        <!-- YOUR CONTACT CHANNELS -->
+        <div class="contact-card">
+            <h4>Contact Me</h4>
+            <a href="mailto:nmeplaysfortnite@gmail.com" class="email-link">nmeplaysfortnite@gmail.com</a>
+            <div style="margin-top: 15px; font-size: 16px; color: #ffffff; font-weight: bold;">
+                Discord ID: <span style="background-color: #5865F2; padding: 3px 8px; border-radius: 4px; font-size: 15px;">frostyrider70</span>
+            </div>
+        </div>
+
+        <!-- YOUR DAD'S EMAIL -->
+        <div class="contact-card">
+            <h4>Contact Dad</h4>
+            <a href="mailto:NMEPLAYSDESTINY@gmail.com" class="email-link">NMEPLAYSDESTINY@gmail.com</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2026 Guardians Hub. Created for Elliot Gaming.
+    </footer>
+
+    <!-- Interactive script to copy Discord username directly to clipboard -->
+    <script>
+        function copyDiscordTag() {
+            var discordUser = "frostyrider70";
+            navigator.clipboard.writeText(discordUser).then(function() {
+                alert("Discord Tag Copied: '" + discordUser + "'! Open Discord and paste it into the Friend Request bar to add me!");
+            }, function(err) {
+                alert("Add me on Discord! My username is: " + discordUser);
+            });
+        }
+    </script>
+
+</body>
+</html>
