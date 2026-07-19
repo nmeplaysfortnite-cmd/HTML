@@ -2,7 +2,160 @@
     <title>Gaming Hub</title><!--
 </div><div <!DOCTYPE html>
 <html>Gameing Hub 
+<head><!DOCTYPE html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaTech</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#111827;
+    color:white;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 10%;
+    background:#0f172a;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+.hero{
+    text-align:center;
+    padding:100px 20px;
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+}
+
+.hero h1{
+    font-size:60px;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:22px;
+    margin-bottom:30px;
+}
+
+button{
+    background:white;
+    color:#2563eb;
+    border:none;
+    padding:15px 30px;
+    font-size:18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:60px 10%;
+}
+
+.card{
+    background:#1e293b;
+    padding:25px;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+footer{
+    text-align:center;
+    padding:25px;
+    background:#0f172a;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <div class="logo">NovaTech</div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Welcome to NovaTech</h1>
+    <p>Building the future with innovative technology.</p>
+
+    <button onclick="showMessage()">Learn More</button>
+
+    <h2 id="message" style="margin-top:25px;"></h2>
+</section>
+
+<section class="features">
+
+<div class="card">
+<h2>🚀 Fast</h2>
+<p>Lightning-fast performance for every project.</p>
+</div>
+
+<div class="card">
+<h2>🔒 Secure</h2>
+<p>Your data is protected with modern security.</p>
+</div>
+
+<div class="card">
+<h2>☁️ Cloud</h2>
+<p>Access your work from anywhere in the world.</p>
+</div>
+
+</section>
+
+<footer>
+© 2026 NovaTech. All Rights Reserved.
+</footer>
+
+<script>
+function showMessage(){
+    document.getElementById("message").textContent =
+    "Thanks for visiting NovaTech!";
+}
+</script>
+
+</body>
+</html>
     <style>
         body {<!DOCTYPE html>
 <html>
